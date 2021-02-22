@@ -1,4 +1,7 @@
+import os
+
 from flask import Flask, url_for, request
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -233,6 +236,76 @@ def selection():
         print(request.form['about'])
         print(request.form['file'])
         return "Форма отправлена"
+
+
+@app.route('/load_photo', methods=['POST', 'GET'])
+def sample_file_upload():
+    if request.method == 'GET':
+        return f'''<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                             <link rel="stylesheet"
+                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                             crossorigin="anonymous">
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                            <title>Отбор астронавтов</title>
+                          </head>
+                          <body>
+                          <h1><p align="center">Загрузка фотографии</p></h1>
+                          <h2><p align="center">для участия в миссии</p></h2>
+                            <div>
+                                <form class="login_form" method="post" enctype="multipart/form-data">
+                                <label for="about">Приложите фотографию</label>
+                                    </p>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control-file" id="photo" name="file">
+                                    </div>
+                                    </br>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                </form>
+                            </div>
+                          </body>
+                        </html>'''
+    elif request.method == 'POST':
+        f = request.files['file']
+        img = Image.open(f)
+        if os._exists("static/img/img.png"):
+            os.remove("static/img/img.png")
+        map_file = "static/img/img.png"
+        img.save(map_file)
+        return f'''<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                             <link rel="stylesheet"
+                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                             crossorigin="anonymous">
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                            <title>Отбор астронавтов</title>
+                          </head>
+                          <body>
+                          <h1><p align="center">Загрузка фотографии</p></h1>
+                          <h2><p align="center">для участия в миссии</p></h2>
+                            <div>
+                                <form class="login_form" method="post" enctype="multipart/form-data">
+                                <label for="about">Приложите фотографию</label>
+                                    </p>
+                                    <img src="{url_for('static', filename='img/img.png')}" alt="нет картинки">
+                                    </p>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control-file" id="photo" name="file">
+                                    </div>
+                                    </br>
+                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                </form>
+                            </div>
+                          </body>
+                        </html>'''
 
 
 if __name__ == '__main__':
