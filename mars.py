@@ -330,20 +330,30 @@ def pictures():
                                 <title>Отбор астронавтов</title>
                               </head>
                               <body>
-                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                   <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                      <img src="{url_for('static', filename='img/mars1.jpg')}" class="d-block w-100" alt="..3.">
+                                      <img src="{url_for('static', filename='img/mars1.jpg')}" class="d-block w-100" alt="..1.">
                                     </div>
                                     <div class="carousel-item">
-                                      <img src="{url_for('static', filename='img/mars2.jpg')}" class="d-block w-100" alt="..4.">
+                                      <img src="{url_for('static', filename='img/mars2.jpg')}" class="d-block w-100" alt="..2.">
                                     </div>
                                     <div class="carousel-item">
-                                      <img src="{url_for('static', filename='img/mars3.jpg')}" class="d-block w-100" alt="..5.">
+                                      <img src="{url_for('static', filename='img/mars3.jpg')}" class="d-block w-100" alt="..3.">
                                     </div>
                                   </div>
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
                                 </div>
                               </body>
+                              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+                              integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
                             </html>'''
 
 
