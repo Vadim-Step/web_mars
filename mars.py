@@ -362,5 +362,10 @@ def profs(type):
     return render_template('base.html', type=type)
 
 
+@app.route('/distribution')
+def distribution():
+    return render_template('base.html', lst=['Ваня', 'Петя', 'Саша', 'Кирилл'])
+
+
 if __name__ == '__main__':
     app.run(port=8000, host='127.0.0.1')
