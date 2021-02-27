@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, render_template
 from PIL import Image
 
 app = Flask(__name__)
@@ -355,6 +355,11 @@ def pictures():
                               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
                               integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
                             </html>'''
+
+
+@app.route('/profs/<type>')
+def profs(type):
+    return render_template('base.html', type=type)
 
 
 if __name__ == '__main__':
