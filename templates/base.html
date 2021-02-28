@@ -7,36 +7,25 @@
 <h1>Миссия Колонизация Марса</h1>
 <h2>И на Марсе будут яблони цвести!</h2>
 
-{% set prof_list = ['инженер-исследователь', 'пилот', 'строитель', 'экзобиолог', 'врач',
-                 'инженер по терраформированию', 'климатолог', 'специалист по радиационной защите',
-                 'астрогеолог', 'гляциолог', 'инженер жизнеобеспечения', 'метеоролог',
-                 'оператор марсохода', 'киберинженер', 'штурман', 'пилот дронов'] %}
-<table border="1">
-   <tr>
-    <th>Цвет</th>
-    <th>Картинка</th>
-   </tr>
-   <tr>
- {% if sex == 'male' %}
-        <h2>Оформление каюты</h2>
-        {% if age < 21 %}
-            <td><div id="rectangle" style="width:350px; height:500px; background-color:#1E90FF"></div></td>
-            <td><img src=/static/img/alien_kid.png class="d-block w-100"></td>
-       {% else %}
-            <td><div id="rectangle2" style="width:350px; height:500px; background-color:blue"></div></td>
-            <td><img src=/static/img/alien_adult.jpg class="d-block w-100"></td>
-       {% endif %}
+{% set prof_list = prof_l %}
+ {% if type == 'ul' %}
+        <h2>Список профессий</h2>
+        <ul>
+        {% for prof in prof_list %}
+        <li>{{ prof }}
+        </li>
+        {% endfor %}
+        </ul>
+ {% elif type == 'ol' %}
+        <h2>Список профессий</h2>
+       <ol>
+           {% for prof in prof_list %}
+        <li>{{ prof }}
+        </li>
+        {% endfor %}
+        </ol>
  {% else %}
-        <h2>Оформление каюты</h2>
-       {% if age < 21 %}
-            <td><div id="rectangle3" style="width:350px; height:500px; background-color:#FB7EFD"></div></td>
-            <td><img src=/static/img/alien_kid.png class="d-block w-100"></td>
-       {% else %}
-            <td><div id="rectangle4" style="width:350px; height:500px; background-color:#FC0FC0"></div></td>
-            <td><img src=/static/img/alien_adult.jpg class="d-block w-100"></td>
-       {% endif %}
+ <h3>wrong type</h3>
  {% endif %}
-   </tr>
- </table>
 </body>
 </html>

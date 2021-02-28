@@ -359,7 +359,11 @@ def pictures():
 
 @app.route('/profs/<type>')
 def profs(type):
-    return render_template('base.html', type=type)
+    prof_l = ['инженер-исследователь', 'пилот', 'строитель', 'экзобиолог', 'врач',
+                 'инженер по терраформированию', 'климатолог', 'специалист по радиационной защите',
+                 'астрогеолог', 'гляциолог', 'инженер жизнеобеспечения', 'метеоролог',
+                 'оператор марсохода', 'киберинженер', 'штурман', 'пилот дронов']
+    return render_template('base.html', type=type, prof_l=prof_l)
 
 
 @app.route('/distribution')
