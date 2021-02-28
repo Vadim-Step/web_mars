@@ -2,30 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>{{ title }}</title>
 </head>
 <body>
 <h1>Миссия Колонизация Марса</h1>
 <h2>И на Марсе будут яблони цвести!</h2>
-
-{% set prof_list = prof_l %}
- {% if type == 'ul' %}
-        <h2>Список профессий</h2>
-        <ul>
-        {% for prof in prof_list %}
-        <li>{{ prof }}
-        </li>
-        {% endfor %}
-        </ul>
- {% elif type == 'ol' %}
-        <h2>Список профессий</h2>
-       <ol>
-           {% for prof in prof_list %}
-        <li>{{ prof }}
-        </li>
-        {% endfor %}
-        </ol>
- {% else %}
- <h3>wrong type</h3>
- {% endif %}
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
 </body>
 </html>
